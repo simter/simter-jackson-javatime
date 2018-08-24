@@ -1,0 +1,12 @@
+spring:
+  main:
+    banner-mode: off
+  jackson:
+    default-property-inclusion: NON_EMPTY # see enum of com.fasterxml.jackson.annotation.JsonInclude.Include
+logging:
+  file: target/app.log
+  level: # one of TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    root: WARN
+
+    #---- simter ----#
+    tech.simter.jackson: WARN

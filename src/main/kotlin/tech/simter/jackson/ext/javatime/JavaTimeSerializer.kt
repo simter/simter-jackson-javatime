@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.JsonSerializer
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.databind.ser.ContextualSerializer
-import tech.simter.jackson.ext.javatime.JavaTimeUtils.getFormatter
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import tech.simter.jackson.ext.javatime.JavaTimeUtils.getFormatter
 import java.time.Instant
 import java.time.Month
 import java.time.Year
@@ -25,9 +25,9 @@ class JavaTimeSerializer private constructor() : ContextualSerializer, JsonSeria
   }
 
   private var handledType: KClass<TemporalAccessor> = TemporalAccessor::class
-  override fun createContextual(provider: SerializerProvider, property: BeanProperty): JsonSerializer<TemporalAccessor> {
+  override fun createContextual(provider: SerializerProvider?, property: BeanProperty?): JsonSerializer<TemporalAccessor>? {
     @Suppress("UNCHECKED_CAST")
-    val handledType = property.type.rawClass.kotlin as KClass<TemporalAccessor>
+    val handledType = property?.type?.rawClass?.kotlin as? KClass<TemporalAccessor> ?: this.handledType
     return getSerializer(handledType = handledType)
   }
 
@@ -38,12 +38,15 @@ class JavaTimeSerializer private constructor() : ContextualSerializer, JsonSeria
   override fun serialize(value: TemporalAccessor?, generator: JsonGenerator, provider: SerializerProvider) {
     logger.debug("handledType={}, handledValue={}", handledType, value)
     if (value == null) generator.writeNull()
-    when (handledType) {
-      Instant::class -> generator.writeNumber((value as Instant).epochSecond)
-      Year::class -> generator.writeNumber((value as Year).value)
-      Month::class -> generator.writeNumber((value as Month).value)
-      YearMonth::class -> generator.writeNumber((value as YearMonth).run { year * 100 + monthValue })
-      else -> generator.writeString(getFormatter(clazz = handledType).format(value))
+    else {
+      val valueType = value.javaClass.kotlin // get value real type
+      when (valueType) {
+        Instant::class -> generator.writeNumber((value as Instant).epochSecond)
+        Year::class -> generator.writeNumber((value as Year).value)
+        Month::class -> generator.writeNumber((value as Month).value)
+        YearMonth::class -> generator.writeNumber((value as YearMonth).run { year * 100 + monthValue })
+        else -> generator.writeString(getFormatter(clazz = valueType).format(value))
+      }
     }
   }
 
@@ -52,7 +55,8 @@ class JavaTimeSerializer private constructor() : ContextualSerializer, JsonSeria
     val INSTANCE = JavaTimeSerializer()
     private val CACHE_SERIALIZERS = mutableMapOf<KClass<TemporalAccessor>, JavaTimeSerializer>()
 
-    fun getSerializer(handledType: KClass<TemporalAccessor>): JavaTimeSerializer {
+    fun getSerializer(handledType: KClass<TemporalAccessor>?): JavaTimeSerializer? {
+      if (handledType == null) return null
       if (!CACHE_SERIALIZERS.containsKey(handledType))
         CACHE_SERIALIZERS[handledType] = JavaTimeSerializer(handledType)
       return CACHE_SERIALIZERS[handledType]!!

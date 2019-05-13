@@ -9,8 +9,6 @@ import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.jupiter.api.Test
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.time.MonthDay
 import java.time.OffsetDateTime
 import java.time.Year
@@ -26,7 +24,6 @@ import java.time.temporal.ChronoUnit
  * @author RJ
  */
 class JavaTimeSerializeTest {
-  private val logger: Logger = LoggerFactory.getLogger(JavaTimeSerializeTest::class.java)
   private val now = OffsetDateTime.now().truncatedTo(ChronoUnit.SECONDS)!!
   private val nowStr = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))!!
 
@@ -58,7 +55,6 @@ class JavaTimeSerializeTest {
 
     // do serialize
     val json = mapper.writeValueAsString(dto)
-    logger.debug("json={}", json)
 
     // verify serialize
     val dateTime2minutes = nowStr.substring(0, 16)

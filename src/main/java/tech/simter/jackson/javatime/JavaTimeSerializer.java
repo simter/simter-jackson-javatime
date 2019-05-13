@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @author RJ
  */
-public class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> implements ContextualSerializer {
+class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> implements ContextualSerializer {
   //private final static Logger logger = LoggerFactory.getLogger(JavaTimeSerializer.class);
   public static JavaTimeSerializer INSTANCE = new JavaTimeSerializer();
   private static Map<Class<TemporalAccessor>, JavaTimeSerializer> CACHE_SERIALIZERS = new HashMap<>();
@@ -27,7 +27,7 @@ public class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> impleme
   private JavaTimeSerializer() {
   }
 
-  public JavaTimeSerializer(Class<TemporalAccessor> handledType) {
+  private JavaTimeSerializer(Class<TemporalAccessor> handledType) {
     this();
     this.handledType = handledType;
   }
@@ -66,14 +66,14 @@ public class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> impleme
     }
   }
 
-  public static JavaTimeSerializer getSerializer(Class<TemporalAccessor> handledType) {
+  private static JavaTimeSerializer getSerializer(Class<TemporalAccessor> handledType) {
     if (handledType == null) return null;
     if (!CACHE_SERIALIZERS.containsKey(handledType))
       CACHE_SERIALIZERS.put(handledType, new JavaTimeSerializer(handledType));
     return CACHE_SERIALIZERS.get(handledType);
   }
 
-  public static void addAllSupportedSerializerToModule(SimpleModule module) {
+  static void addAllSupportedSerializerToModule(SimpleModule module) {
     module.addSerializer(INSTANCE);
   }
 }

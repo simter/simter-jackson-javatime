@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.*;
 import java.time.temporal.TemporalAccessor;
 
-public class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeserializer<T> {
+class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeserializer<T> {
   //private final static Logger logger = LoggerFactory.getLogger(JavaTimeDeserializer.class);
   private Class<T> handledType;
 
@@ -24,7 +24,7 @@ public class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeseri
     return (T) value2TemporalAccessor(value, handledType);
   }
 
-  public static TemporalAccessor value2TemporalAccessor(String value, Class<? extends TemporalAccessor> targetClass) {
+  static TemporalAccessor value2TemporalAccessor(String value, Class<? extends TemporalAccessor> targetClass) {
     if (targetClass == LocalDateTime.class) return LocalDateTime.parse(value, JavaTimeUtils.getFormatter(targetClass));
     if (targetClass == LocalDate.class) return LocalDate.parse(value, JavaTimeUtils.getFormatter(targetClass));
     if (targetClass == LocalTime.class) return LocalTime.parse(value, JavaTimeUtils.getFormatter(targetClass));

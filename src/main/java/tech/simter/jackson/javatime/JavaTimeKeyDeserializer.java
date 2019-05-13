@@ -12,7 +12,7 @@ import static tech.simter.jackson.javatime.JavaTimeDeserializer.value2TemporalAc
 /**
  * @author RJ
  */
-public class JavaTimeKeyDeserializer<T extends TemporalAccessor> extends KeyDeserializer {
+class JavaTimeKeyDeserializer<T extends TemporalAccessor> extends KeyDeserializer {
   //private final static Logger logger = LoggerFactory.getLogger(JavaTimeKeyDeserializer.class);
   private Class<T> handledType;
 
@@ -27,7 +27,7 @@ public class JavaTimeKeyDeserializer<T extends TemporalAccessor> extends KeyDese
   }
 
   @SuppressWarnings("unchecked")
-  public static void addAllSupportedKeyDeserializerToModule(SimpleModule module) {
+  static void addAllSupportedKeyDeserializerToModule(SimpleModule module) {
     module.addKeyDeserializer(LocalDateTime.class, new JavaTimeKeyDeserializer(LocalDateTime.class));
     module.addKeyDeserializer(LocalDate.class, new JavaTimeKeyDeserializer(LocalDate.class));
     module.addKeyDeserializer(LocalTime.class, new JavaTimeKeyDeserializer(LocalTime.class));

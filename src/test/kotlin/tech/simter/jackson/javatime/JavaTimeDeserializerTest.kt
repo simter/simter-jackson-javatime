@@ -7,8 +7,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import tech.simter.jackson.javatime.JavaTimeDeserializer.addAllSupportedDeserializerToModule
 import java.time.*
 import java.time.format.DateTimeFormatter
@@ -20,8 +18,6 @@ import java.time.temporal.ChronoUnit
  * @author RJ
  */
 class JavaTimeDeserializerTest {
-  private val logger: Logger = LoggerFactory.getLogger(JavaTimeDeserializerTest::class.java)
-
   @Test
   fun testDeserializer() {
     // config
@@ -50,11 +46,9 @@ class JavaTimeDeserializerTest {
         "monthDay": "${dateTime2minutes.substring(5, 10)}"
       }
       """.trimIndent()
-    logger.debug("json={}", json)
 
     // do deserialize
     val dto = mapper.readValue(json, Example::class.java)
-    logger.debug("dto={}", dto)
 
     // verify deserialize
     assertNull(dto.name)

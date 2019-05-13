@@ -11,8 +11,6 @@ import org.junit.Assert.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -23,7 +21,6 @@ import java.time.temporal.ChronoUnit
  * @author RJ
  */
 class JavaTimeModuleTest {
-  private val logger: Logger = LoggerFactory.getLogger(JavaTimeModuleTest::class.java)
   private val now = OffsetDateTime.now().truncatedTo(ChronoUnit.MINUTES)!!
   private val nowStr = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))!!
 
@@ -57,8 +54,6 @@ class JavaTimeModuleTest {
 
     // do serialize
     val json = mapper.writeValueAsString(expected)
-    logger.debug("expected={}", expected)
-    logger.debug("json={}", json)
 
     // verify serialize
     val dateTime2minutes = nowStr.substring(0, 16)
@@ -79,7 +74,6 @@ class JavaTimeModuleTest {
 
     // do deserialize
     val actual = mapper.readValue(json, Example::class.java)
-    logger.debug("actual={}", actual)
 
     // verify deserialize
     assertNull(actual.name)

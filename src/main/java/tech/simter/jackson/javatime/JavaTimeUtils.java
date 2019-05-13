@@ -9,15 +9,15 @@ import java.util.Map;
 /**
  * @author RJ
  */
-public final class JavaTimeUtils {
-  public final static ZoneOffset LOCAL_OFFSET = OffsetDateTime.now().getOffset();
-  public final static String LOCAL_DATE_PATTERN = "yyyy-MM-dd";
-  public final static String LOCAL_TIME_PATTERN = "HH:mm";
-  public final static String LOCAL_DATE_TIME_PATTERN = LOCAL_DATE_PATTERN + " " + LOCAL_TIME_PATTERN;
-  public final static String LOCAL_MONTH_DAY_PATTERN = "MM-dd";
+final class JavaTimeUtils {
+  final static ZoneOffset LOCAL_OFFSET = OffsetDateTime.now().getOffset();
+  private final static String LOCAL_DATE_PATTERN = "yyyy-MM-dd";
+  private final static String LOCAL_TIME_PATTERN = "HH:mm";
+  private final static String LOCAL_DATE_TIME_PATTERN = LOCAL_DATE_PATTERN + " " + LOCAL_TIME_PATTERN;
+  private final static String LOCAL_MONTH_DAY_PATTERN = "MM-dd";
   private final static String DEFAULT_FORMATTER_KEY = "DEFAULT";
   private final static Map<String, DateTimeFormatter> CACHE_PATTERNS = new HashMap<>();
-  public final static Map<Class<? extends TemporalAccessor>, String> DEFAULT_LOCAL_PATTERNS = new HashMap<>();
+  private final static Map<Class<? extends TemporalAccessor>, String> DEFAULT_LOCAL_PATTERNS = new HashMap<>();
 
   static {
     CACHE_PATTERNS.put(DEFAULT_FORMATTER_KEY, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
@@ -31,11 +31,11 @@ public final class JavaTimeUtils {
     DEFAULT_LOCAL_PATTERNS.put(ZonedDateTime.class, LOCAL_DATE_TIME_PATTERN);
   }
 
-  public static DateTimeFormatter getFormatter(Class<? extends TemporalAccessor> clazz) {
+  static DateTimeFormatter getFormatter(Class<? extends TemporalAccessor> clazz) {
     return getFormatter(clazz, null);
   }
 
-  public static DateTimeFormatter getFormatter(Class<? extends TemporalAccessor> clazz, String pattern) {
+  static DateTimeFormatter getFormatter(Class<? extends TemporalAccessor> clazz, String pattern) {
     if (pattern == null || pattern.isEmpty()) {
       return getFormatter(clazz, DEFAULT_LOCAL_PATTERNS.get(clazz));
     } else {

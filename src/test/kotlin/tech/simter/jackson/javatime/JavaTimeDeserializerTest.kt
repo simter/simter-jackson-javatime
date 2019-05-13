@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import tech.simter.jackson.Dto
+import tech.simter.jackson.Example
 import tech.simter.jackson.javatime.JavaTimeDeserializer.Companion.addAllSupportedDeserializerToModule
 import java.time.*
 import java.time.format.DateTimeFormatter
@@ -54,7 +54,7 @@ class JavaTimeDeserializerTest {
     logger.debug("json={}", json)
 
     // do deserialize
-    val dto = mapper.readValue(json, Dto::class.java)
+    val dto = mapper.readValue(json, Example::class.java)
     logger.debug("dto={}", dto)
 
     // verify deserialize

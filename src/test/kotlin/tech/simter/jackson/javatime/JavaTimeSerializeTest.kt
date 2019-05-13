@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.Version
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.jayway.jsonpath.matchers.JsonPathMatchers.*
-import tech.simter.jackson.Dto
+import tech.simter.jackson.Example
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
@@ -41,7 +41,7 @@ class JavaTimeSerializeTest {
     mapper.setSerializationInclusion(NON_EMPTY) // not serialize null and empty value
 
     // init data
-    val dto = Dto(
+    val dto = Example(
       name = "",
       localDateTime = now.toLocalDateTime(),
       localDate = now.toLocalDate(),

@@ -1,6 +1,6 @@
 package cn.gftaxi.webflux.dynamicdto
 
-import tech.simter.jackson.Dto
+import tech.simter.jackson.Example
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8
 import org.springframework.stereotype.Component
@@ -17,6 +17,6 @@ import reactor.core.publisher.Mono
 @Component
 class PatchHandler @Autowired constructor() : HandlerFunction<ServerResponse> {
   override fun handle(request: ServerRequest): Mono<ServerResponse> {
-    return request.bodyToMono<Dto>().flatMap { ok().contentType(APPLICATION_JSON_UTF8).syncBody(it) }
+    return request.bodyToMono<Example>().flatMap { ok().contentType(APPLICATION_JSON_UTF8).syncBody(it) }
   }
 }

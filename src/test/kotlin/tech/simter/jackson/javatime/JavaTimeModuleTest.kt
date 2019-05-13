@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.jayway.jsonpath.matchers.JsonPathMatchers.*
-import tech.simter.jackson.Dto
+import tech.simter.jackson.Example
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
@@ -40,7 +40,7 @@ class JavaTimeModuleTest {
     mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
 
     // init data
-    val expected = Dto(
+    val expected = Example(
       name = "",
       localDateTime = now.toLocalDateTime(),
       localDate = now.toLocalDate(),
@@ -79,7 +79,7 @@ class JavaTimeModuleTest {
     )))
 
     // do deserialize
-    val actual = mapper.readValue(json, Dto::class.java)
+    val actual = mapper.readValue(json, Example::class.java)
     logger.debug("actual={}", actual)
 
     // verify deserialize

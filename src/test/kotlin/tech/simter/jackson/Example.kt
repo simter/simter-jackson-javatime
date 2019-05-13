@@ -3,7 +3,7 @@ package tech.simter.jackson
 import java.time.*
 import java.time.temporal.ChronoUnit
 
-data class Dto(
+data class Example(
   val id: Int? = null,
   val name: String? = null,
   val localDateTime: LocalDateTime? = null,
@@ -21,7 +21,7 @@ data class Dto(
 ) {
   companion object {
     private val now = OffsetDateTime.now().truncatedTo(ChronoUnit.MINUTES)!!
-    val instance2minutes = Dto(
+    val instance2minutes = Example(
       name = "",
       localDateTime = now.toLocalDateTime(),
       localDate = now.toLocalDate(),

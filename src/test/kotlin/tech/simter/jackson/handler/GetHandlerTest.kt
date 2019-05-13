@@ -11,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.web.reactive.server.WebTestClient.bindToRouterFunction
 import org.springframework.web.reactive.function.server.RequestPredicates.GET
 import org.springframework.web.reactive.function.server.RouterFunctions.route
-import tech.simter.jackson.Dto
+import tech.simter.jackson.Example
 import tech.simter.jackson.ModuleConfiguration
 import java.time.format.DateTimeFormatter
 
@@ -32,7 +32,7 @@ class GetHandlerTest @Autowired constructor(
 
   @Test
   fun get() {
-    val dateTime = Dto.instance2minutes.offsetDateTime!!
+    val dateTime = Example.instance2minutes.offsetDateTime!!
     val dateTime2minutes = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))!!
 
     val client = bindToRouterFunction(route(GET(path), getHandler)).build()
@@ -78,7 +78,7 @@ class GetHandlerTest @Autowired constructor(
 //      .jsonPath("$.notSet").doesNotExist()
 //      .jsonPath("$.name").isEqualTo(DEFAULT_DTO1.name!!)
 //      .jsonPath("$.decimal").isEqualTo(DEFAULT_DTO1.decimal!!)
-//      // By Dto/@set:DateTimeFormat
+//      // By Example/@set:DateTimeFormat
 //      .jsonPath("$.localDate").isEqualTo(localDate)
 //      .jsonPath("$.offsetDateTime").isEqualTo(offsetDateTime)
 //  }

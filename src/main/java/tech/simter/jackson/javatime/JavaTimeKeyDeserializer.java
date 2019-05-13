@@ -3,8 +3,6 @@ package tech.simter.jackson.javatime;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.KeyDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.*;
 import java.time.temporal.TemporalAccessor;
@@ -15,7 +13,7 @@ import static tech.simter.jackson.javatime.JavaTimeDeserializer.value2TemporalAc
  * @author RJ
  */
 public class JavaTimeKeyDeserializer<T extends TemporalAccessor> extends KeyDeserializer {
-  private final static Logger logger = LoggerFactory.getLogger(JavaTimeKeyDeserializer.class);
+  //private final static Logger logger = LoggerFactory.getLogger(JavaTimeKeyDeserializer.class);
   private Class<T> handledType;
 
   private JavaTimeKeyDeserializer(Class<T> handledType) {
@@ -24,7 +22,7 @@ public class JavaTimeKeyDeserializer<T extends TemporalAccessor> extends KeyDese
 
   @SuppressWarnings("unchecked")
   public T deserializeKey(String key, DeserializationContext context) {
-    logger.debug("handledType={}, handledValue={}", handledType, key);
+    //logger.debug("handledType={}, handledValue={}", handledType, key);
     return (T) value2TemporalAccessor(key, handledType);
   }
 

@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -22,7 +20,7 @@ import java.util.Map;
  * @author RJ
  */
 public class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> implements ContextualSerializer {
-  private final static Logger logger = LoggerFactory.getLogger(JavaTimeSerializer.class);
+  //private final static Logger logger = LoggerFactory.getLogger(JavaTimeSerializer.class);
   public static JavaTimeSerializer INSTANCE = new JavaTimeSerializer();
   private static Map<Class<TemporalAccessor>, JavaTimeSerializer> CACHE_SERIALIZERS = new HashMap<>();
 
@@ -49,7 +47,7 @@ public class JavaTimeSerializer extends JsonSerializer<TemporalAccessor> impleme
   }
 
   public void serialize(TemporalAccessor value, JsonGenerator generator, SerializerProvider provider) throws IOException {
-    logger.debug("handledType={}, handledValue={}", handledType, value);
+    //logger.debug("handledType={}, handledValue={}", handledType, value);
     if (value == null) generator.writeNull();
     else {
       Class<? extends TemporalAccessor> valueType = value.getClass(); // get value real type

@@ -4,15 +4,13 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.*;
 import java.time.temporal.TemporalAccessor;
 
 public class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeserializer<T> {
-  private final static Logger logger = LoggerFactory.getLogger(JavaTimeDeserializer.class);
+  //private final static Logger logger = LoggerFactory.getLogger(JavaTimeDeserializer.class);
   private Class<T> handledType;
 
   private JavaTimeDeserializer(Class<T> handledType) {
@@ -22,7 +20,7 @@ public class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeseri
   @SuppressWarnings("unchecked")
   public T deserialize(JsonParser parser, DeserializationContext context) throws IOException {
     String value = parser.getText();
-    logger.debug("handledType={}, handledValue={}", handledType, value);
+    //logger.debug("handledType={}, handledValue={}", handledType, value);
     return (T) value2TemporalAccessor(value, handledType);
   }
 

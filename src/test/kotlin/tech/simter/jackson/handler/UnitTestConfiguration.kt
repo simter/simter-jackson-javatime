@@ -1,4 +1,4 @@
-package tech.simter.jackson
+package tech.simter.jackson.handler
 
 import cn.gftaxi.webflux.dynamicdto.JavaTimeConfiguration
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
@@ -15,4 +15,4 @@ import org.springframework.web.reactive.config.EnableWebFlux
 @Configuration
 @EnableWebFlux
 @Import(JavaTimeConfiguration::class, JacksonAutoConfiguration::class, WebFluxAutoConfiguration::class)
-class ModuleConfiguration
+class UnitTestConfiguration

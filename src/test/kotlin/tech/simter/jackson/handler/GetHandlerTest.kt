@@ -12,7 +12,6 @@ import org.springframework.test.web.reactive.server.WebTestClient.bindToRouterFu
 import org.springframework.web.reactive.function.server.RequestPredicates.GET
 import org.springframework.web.reactive.function.server.RouterFunctions.route
 import tech.simter.jackson.Example
-import tech.simter.jackson.ModuleConfiguration
 import java.time.format.DateTimeFormatter
 
 /**
@@ -23,7 +22,7 @@ import java.time.format.DateTimeFormatter
  * @author RJ
  */
 @Disabled
-@SpringJUnitConfig(GetHandler::class, ModuleConfiguration::class)
+@SpringJUnitConfig(GetHandler::class, UnitTestConfiguration::class)
 class GetHandlerTest @Autowired constructor(
   private val getHandler: GetHandler
 ) {

@@ -4,12 +4,12 @@
   <parent>
     <groupId>tech.simter</groupId>
     <artifactId>simter-parent</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
     <relativePath>../simter-parent</relativePath>
   </parent>
   <artifactId>simter-jackson-javatime</artifactId>
   <packaging>jar</packaging>
-  <version>${revision}</version>
+  <version>0.2.0</version>
   <dependencies>
     <!-- jackson -->
     <dependency>

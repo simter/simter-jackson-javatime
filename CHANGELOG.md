@@ -1,5 +1,14 @@
 # simter-jackson-javatime changelog
 
+## 0.2.0 - 2019-05-13
+
+- Only expose JavaTimeModule API
+- Add services config for com.fasterxml.jackson.databind.Module
+- Refactor package name `tech.simter.jackson.ext.javatime` to 'tech.simter.jackson.javatime'
+- Convert source code from kotlin to java for compatibility
+- Delete slf4j compile dependency
+- Delete unnecessary test case
+
 ## 0.1.0 - 2019-05-13
 
 > This version is same with [simter-jackson-ext-1.0.0], just rename artifactId to `simter-jackson-javatime`.

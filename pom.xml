@@ -7,8 +7,9 @@
     <version>${revision}</version>
     <relativePath>../simter-parent</relativePath>
   </parent>
-  <artifactId>simter-jackson-ext</artifactId>
+  <artifactId>simter-jackson-javatime</artifactId>
   <packaging>jar</packaging>
+  <version>${revision}</version>
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -174,7 +175,7 @@
       </plugin>
     </plugins>
   </build>
-  <url>https://github.com/simter/simter-jackson-ext</url>
+  <url>https://github.com/simter/simter-jackson-javatime</url>
   <licenses>
     <license>
       <name>MIT</name>
@@ -183,7 +184,7 @@
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/simter/simter-jackson-ext.git</url>
+    <url>https://github.com/simter/simter-jackson-javatime.git</url>
   </scm>
   <organization>
     <name>simter</name>
@@ -197,6 +198,6 @@
   </developers>
   <issueManagement>
     <system>github</system>
-    <url>https://github.com/simter/simter-jackson-ext/issues</url>
+    <url>https://github.com/simter/simter-jackson-javatime/issues</url>
   </issueManagement>
 </project>

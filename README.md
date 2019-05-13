@@ -1,6 +1,6 @@
-# simter-jackson-ext
+# simter-jackson-javatime
 
-A brand new [Jackson Java 8 Date & Time] serialization and deserialization module with global localize config.
+A brand new [Jackson Java8+ Date & Time] serialization and deserialization module with global localize config.
 
 [Jackson standard JavaTimeModule] has a standard [ISO-8601] format default, and it can not be config to another 
 default format globally. That's too bad for real projects. This module do these things good. But it's not a extension 
@@ -15,7 +15,7 @@ config to another format by customization in the future.
 ```xml
 <dependency>
   <groupId>tech.simter</groupId>
-  <artifactId>simter-jackson-ext</artifactId>
+  <artifactId>simter-jackson-javatime</artifactId>
   <version>${VERSION}</version>
 </dependency>
 ```
@@ -72,7 +72,7 @@ mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true
 See [simter-reactive-web/.../WebFluxConfiguration.kt].
 
 
-[Jackson Java 8 Date & Time]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
+[Jackson Java8+ Date & Time]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
 [Jackson standard JavaTimeModule]: https://github.com/FasterXML/jackson-modules-java8/blob/master/datetime/src/main/java/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.java
 [ISO-8601]: http://en.wikipedia.org/wiki/ISO_8601
 [simter-reactive-web/.../WebFluxConfiguration.kt]: https://github.com/simter/simter-reactive-web/blob/master/src/main/kotlin/tech/simter/reactive/web/webflux/WebFluxConfiguration.kt

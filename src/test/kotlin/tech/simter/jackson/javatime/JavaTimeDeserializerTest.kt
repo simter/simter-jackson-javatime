@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import tech.simter.jackson.javatime.JavaTimeDeserializer.Companion.addAllSupportedDeserializerToModule
+import tech.simter.jackson.javatime.JavaTimeDeserializer.addAllSupportedDeserializerToModule
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit

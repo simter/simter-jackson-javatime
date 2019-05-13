@@ -1,6 +1,6 @@
 package cn.gftaxi.webflux.dynamicdto
 
-import tech.simter.jackson.ext.Dto
+import tech.simter.jackson.Dto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8
 import org.springframework.stereotype.Component

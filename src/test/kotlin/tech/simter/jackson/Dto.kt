@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext
+package tech.simter.jackson
 
 import java.time.*
 import java.time.temporal.ChronoUnit

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
-import tech.simter.jackson.ext.javatime.JavaTimeModule
+import tech.simter.jackson.javatime.JavaTimeModule
 
 /**
  * @author RJ

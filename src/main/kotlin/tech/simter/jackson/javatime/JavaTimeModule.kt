@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import com.fasterxml.jackson.databind.module.SimpleModule
 

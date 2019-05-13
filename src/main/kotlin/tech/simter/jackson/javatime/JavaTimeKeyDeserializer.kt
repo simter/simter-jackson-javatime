@@ -1,9 +1,9 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.KeyDeserializer
 import com.fasterxml.jackson.databind.module.SimpleModule
-import tech.simter.jackson.ext.javatime.JavaTimeDeserializer.Companion.value2TemporalAccessor
+import tech.simter.jackson.javatime.JavaTimeDeserializer.Companion.value2TemporalAccessor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.*

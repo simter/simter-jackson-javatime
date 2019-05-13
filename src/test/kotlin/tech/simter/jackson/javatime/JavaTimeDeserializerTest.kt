@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import com.fasterxml.jackson.core.Version
 import com.fasterxml.jackson.databind.DeserializationFeature
@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import tech.simter.jackson.ext.Dto
-import tech.simter.jackson.ext.javatime.JavaTimeDeserializer.Companion.addAllSupportedDeserializerToModule
+import tech.simter.jackson.Dto
+import tech.simter.jackson.javatime.JavaTimeDeserializer.Companion.addAllSupportedDeserializerToModule
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit

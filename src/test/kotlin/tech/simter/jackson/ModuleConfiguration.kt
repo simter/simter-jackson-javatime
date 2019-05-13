@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext
+package tech.simter.jackson
 
 import cn.gftaxi.webflux.dynamicdto.JavaTimeConfiguration
 import org.slf4j.Logger
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import
 import org.springframework.web.reactive.config.EnableWebFlux
 
 /**
- * Test [Dto1].
+ * Test [Dto].
  *
  * See [1.11.3. Conversion, formatting](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-conversion).
  *

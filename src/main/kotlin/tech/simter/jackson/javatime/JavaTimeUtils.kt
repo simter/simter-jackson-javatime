@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import java.time.*
 import java.time.format.DateTimeFormatter
@@ -12,7 +12,7 @@ object JavaTimeUtils {
   var LOCAL_OFFSET: ZoneOffset = OffsetDateTime.now().offset!!
   var LOCAL_DATE_PATTERN: String = "yyyy-MM-dd"
   var LOCAL_TIME_PATTERN: String = "HH:mm"
-  var LOCAL_DATE_TIME_PATTERN: String = "${LOCAL_DATE_PATTERN} ${LOCAL_TIME_PATTERN}"
+  var LOCAL_DATE_TIME_PATTERN: String = "$LOCAL_DATE_PATTERN $LOCAL_TIME_PATTERN"
   var LOCAL_MONTH_DAY_PATTERN: String = "MM-dd"
   private const val DEFAULT_FORMATTER_KEY = "DEFAULT"
   private val CACHE_PATTERNS = mutableMapOf<String, DateTimeFormatter>(

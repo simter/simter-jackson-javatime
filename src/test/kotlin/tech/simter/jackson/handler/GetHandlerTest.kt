@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext.handler
+package tech.simter.jackson.handler
 
 import cn.gftaxi.webflux.dynamicdto.GetHandler
 import org.junit.jupiter.api.Disabled
@@ -11,8 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.web.reactive.server.WebTestClient.bindToRouterFunction
 import org.springframework.web.reactive.function.server.RequestPredicates.GET
 import org.springframework.web.reactive.function.server.RouterFunctions.route
-import tech.simter.jackson.ext.Dto
-import tech.simter.jackson.ext.ModuleConfiguration
+import tech.simter.jackson.Dto
+import tech.simter.jackson.ModuleConfiguration
 import java.time.format.DateTimeFormatter
 
 /**

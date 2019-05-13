@@ -1,11 +1,11 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY
 import com.fasterxml.jackson.core.Version
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.jayway.jsonpath.matchers.JsonPathMatchers.*
-import tech.simter.jackson.ext.Dto
+import tech.simter.jackson.Dto
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat

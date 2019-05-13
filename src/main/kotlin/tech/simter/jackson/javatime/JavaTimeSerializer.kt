@@ -1,4 +1,4 @@
-package tech.simter.jackson.ext.javatime
+package tech.simter.jackson.javatime
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.BeanProperty
@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.databind.ser.ContextualSerializer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import tech.simter.jackson.ext.javatime.JavaTimeUtils.getFormatter
+import tech.simter.jackson.javatime.JavaTimeUtils.getFormatter
 import java.time.Instant
 import java.time.Month
 import java.time.Year

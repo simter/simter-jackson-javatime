@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY
 import com.fasterxml.jackson.core.Version
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
-import com.jayway.jsonpath.matchers.JsonPathMatchers.*
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.equalTo
-import org.junit.Assert.assertThat
+import net.javacrumbs.jsonunit.assertj.JsonAssertion
+import net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson
 import org.junit.jupiter.api.Test
 import java.time.MonthDay
 import java.time.OffsetDateTime
@@ -15,6 +13,7 @@ import java.time.Year
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
+
 
 /**
  * Test [JavaTimeSerializer].
@@ -58,19 +57,19 @@ class JavaTimeSerializeTest {
 
     // verify serialize
     val dateTime2minutes = nowStr.substring(0, 16)
-    assertThat(json, isJson(allOf(
-      withoutJsonPath("$.name"),
-      withJsonPath("$.localDateTime", equalTo(dateTime2minutes)),
-      withJsonPath("$.localDate", equalTo(nowStr.substring(0, 10))),
-      withJsonPath("$.localTime", equalTo(nowStr.substring(11, 16))),
-      withJsonPath("$.offsetDateTime", equalTo(dateTime2minutes)),
-      withJsonPath("$.offsetTime", equalTo(nowStr.substring(11, 16))),
-      withJsonPath("$.zonedDateTime", equalTo(dateTime2minutes)),
-      withJsonPath("$.instant", equalTo(now.toInstant().epochSecond.toInt())),
-      withJsonPath("$.yearMonth", equalTo(now.year * 100 + now.monthValue)),
-      withJsonPath("$.year", equalTo(now.year)),
-      withJsonPath("$.month", equalTo(now.monthValue)),
-      withJsonPath("$.monthDay", equalTo(nowStr.substring(5, 10)))
-    )))
+    assertThatJson(json).and(
+      JsonAssertion { it.node("name").isAbsent() },
+      JsonAssertion { it.node("localDateTime").isEqualTo(dateTime2minutes) },
+      JsonAssertion { it.node("localDate").isEqualTo(nowStr.substring(0, 10)) },
+      JsonAssertion { it.node("localTime").isEqualTo(nowStr.substring(11, 16)) },
+      JsonAssertion { it.node("offsetDateTime").isEqualTo(dateTime2minutes) },
+      JsonAssertion { it.node("offsetTime").isEqualTo(nowStr.substring(11, 16)) },
+      JsonAssertion { it.node("zonedDateTime").isEqualTo(dateTime2minutes) },
+      JsonAssertion { it.node("instant").isEqualTo(now.toInstant().epochSecond.toInt()) },
+      JsonAssertion { it.node("yearMonth").isEqualTo(now.year * 100 + now.monthValue) },
+      JsonAssertion { it.node("year").isEqualTo(now.year) },
+      JsonAssertion { it.node("month").isEqualTo(now.monthValue) },
+      JsonAssertion { it.node("monthDay").isEqualTo(nowStr.substring(5, 10)) }
+    )
   }
 }

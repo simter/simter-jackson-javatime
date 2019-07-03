@@ -9,7 +9,7 @@
   </parent>
   <artifactId>simter-jackson-javatime</artifactId>
   <packaging>jar</packaging>
-  <version>${revision}</version>
+  <version>0.3.0</version>
   <dependencies>
     <!-- jackson -->
     <dependency>

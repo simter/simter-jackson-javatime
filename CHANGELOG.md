@@ -1,5 +1,12 @@
 # simter-jackson-javatime changelog
 
+## 0.3.0 - 2019-07-03
+
+No code changed, just polishing maven config and unit test.
+
+- Use json-unit-assertj instead of json-path-assert
+- Change parent to simter-dependencies-1.2.0
+
 ## 0.2.0 - 2019-05-13
 
 - Only expose JavaTimeModule API

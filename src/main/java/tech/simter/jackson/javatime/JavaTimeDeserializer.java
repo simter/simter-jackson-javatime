@@ -25,19 +25,19 @@ class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeserializer<
   }
 
   static TemporalAccessor value2TemporalAccessor(String value, Class<? extends TemporalAccessor> targetClass) {
-    if (targetClass == LocalDateTime.class) return LocalDateTime.parse(value, JavaTimeUtils.getFormatter(targetClass));
-    if (targetClass == LocalDate.class) return LocalDate.parse(value, JavaTimeUtils.getFormatter(targetClass));
-    if (targetClass == LocalTime.class) return LocalTime.parse(value, JavaTimeUtils.getFormatter(targetClass));
+    if (targetClass == LocalDateTime.class) return LocalDateTime.parse(value, JavaTimeFormat.getFormatter(targetClass));
+    if (targetClass == LocalDate.class) return LocalDate.parse(value, JavaTimeFormat.getFormatter(targetClass));
+    if (targetClass == LocalTime.class) return LocalTime.parse(value, JavaTimeFormat.getFormatter(targetClass));
     if (targetClass == OffsetDateTime.class) return OffsetDateTime.of(
-      LocalDateTime.parse(value, JavaTimeUtils.getFormatter(targetClass)),
-      JavaTimeUtils.LOCAL_OFFSET
+      LocalDateTime.parse(value, JavaTimeFormat.getFormatter(targetClass)),
+      JavaTimeFormat.LOCAL_OFFSET
     );
     if (targetClass == OffsetTime.class) return OffsetTime.of(
-      LocalTime.parse(value, JavaTimeUtils.getFormatter(targetClass)),
-      JavaTimeUtils.LOCAL_OFFSET
+      LocalTime.parse(value, JavaTimeFormat.getFormatter(targetClass)),
+      JavaTimeFormat.LOCAL_OFFSET
     );
     if (targetClass == ZonedDateTime.class) return ZonedDateTime.of(
-      LocalDateTime.parse(value, JavaTimeUtils.getFormatter(targetClass)),
+      LocalDateTime.parse(value, JavaTimeFormat.getFormatter(targetClass)),
       ZoneId.systemDefault()
     );
     if (targetClass == Instant.class) return Instant.ofEpochSecond(Long.parseLong(value));
@@ -45,7 +45,7 @@ class JavaTimeDeserializer<T extends TemporalAccessor> extends JsonDeserializer<
       return YearMonth.of(Integer.parseInt(value.substring(0, 4)), Integer.parseInt(value.substring(4)));
     if (targetClass == Year.class) return Year.of(Integer.parseInt(value));
     if (targetClass == Month.class) return Month.of(Integer.parseInt(value));
-    if (targetClass == MonthDay.class) return MonthDay.parse(value, JavaTimeUtils.getFormatter(targetClass));
+    if (targetClass == MonthDay.class) return MonthDay.parse(value, JavaTimeFormat.getFormatter(targetClass));
     else throw new UnsupportedOperationException("handledType=$targetClass, handledValue=$value");
   }
 

@@ -26,7 +26,7 @@ class JavaTimeModuleTest {
   fun test() {
     // config
     val mapper = ObjectMapper()
-    mapper.registerModule(JavaTimeModule())
+    mapper.registerModule(JavaTimeModule.INSTANCE)
     mapper.setSerializationInclusion(NON_EMPTY) // not serialize null and empty value
     mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     mapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)

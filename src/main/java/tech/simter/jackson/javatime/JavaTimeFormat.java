@@ -64,6 +64,9 @@ public class JavaTimeFormat {
     });
   }
 
+  public JavaTimeFormat() {
+  }
+
   public JavaTimeFormat(String pattern, JsonFormat.Shape shape) {
     this.pattern = pattern;
     this.shape = shape;

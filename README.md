@@ -7,8 +7,19 @@ default format globally. That's too bad for real projects. This module do these 
 of [Jackson standard JavaTimeModule]. It's a brand new module for setting global data-time format.
 
 It is config to localize date-time format like `yyyy-MM-dd HH:mm` now, accurate to minute and without zone and 
-offset info (global use local zone and offset default). That's more useful in my real projects. it would be 
-config to another format by customization in the future.
+offset info (global use local zone and offset default). That's more useful in my real projects. it can be 
+config to another default format by customization in by [JavaTimeFormat.JAVA_TIME_FORMATS].
+
+For spring-boot project, use property `simter.jackson.java-time.global-formats` to config a custom default format, such as:
+
+```yml
+simter.jackson.java-time.global-formats:
+  "[java.time.LocalDateTime]":
+    pattern: "yyyy-MM-dd HH:mm:ss"
+    shape: STRING
+```
+
+This is auto config by register [JavaTimeConfiguration] to spring.
 
 ## 1. Installation
 
@@ -72,6 +83,8 @@ mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true
 See [simter-reactive-web/.../WebFluxConfiguration.kt].
 
 
+[JavaTimeFormat.JAVA_TIME_FORMATS]: https://github.com/simter/simter-jackson-javatime/blob/master/src/main/java/tech/simter/jackson/javatime/JavaTimeFormat.java#L29
+[JavaTimeConfiguration]: https://github.com/simter/simter-jackson-javatime/blob/master/src/main/java/tech/simter/jackson/javatime/support/JavaTimeConfiguration.java
 [Jackson Java8+ Date & Time]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
 [Jackson standard JavaTimeModule]: https://github.com/FasterXML/jackson-modules-java8/blob/master/datetime/src/main/java/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.java
 [ISO-8601]: http://en.wikipedia.org/wiki/ISO_8601

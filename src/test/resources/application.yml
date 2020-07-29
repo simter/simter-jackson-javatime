@@ -1,3 +1,9 @@
+simter:
+  jackson.java-time:
+    global-formats:
+      "[java.time.LocalDateTime]":
+        pattern: "yyyy-MM-dd HH:mm:ss"
+        shape: STRING
 spring:
   main.banner-mode: 'off'
   jackson:

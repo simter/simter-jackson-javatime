@@ -1,5 +1,10 @@
 # simter-jackson-javatime changelog
 
+## 0.5.0 - 2020-12-03
+
+- Upgrade to simter-dependencies-2.0.0
+- Fixed multiple instance error on JavaTimeModule
+
 ## 0.4.0 - 2020-07-28
 
 - Upgrade to simter-dependencies-2.0.0-M2
